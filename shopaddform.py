@@ -3,7 +3,7 @@ import streamlit as st
 st.title('MyBake 2024')
 
 # Section title for the form
-st.header('Add New Shop')
+st.header('Add a New Shop')
 
 with st.form(key='add_shop_form'):
     shop_name = st.text_input(label='Shop Name:')
