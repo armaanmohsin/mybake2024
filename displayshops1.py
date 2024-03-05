@@ -20,21 +20,8 @@ response = requests.get(url, headers=headers)
 if response.status_code == 200:
     # Assuming the API returns JSON that can be directly converted to a DataFrame
     data = response.json()
-    
-    # Extract the shops data
-    shops_data = data['shops']
+    df = pd.DataFrame(data)
 
-    # Convert the shops data to a list if not already
-    if not isinstance(shops_data, list):
-        shops_data = [shops_data]
-    
-    # Create a DataFrame with specified headers
-    df = pd.DataFrame(shops_data)
-    
-    # Select and rename the columns as specified
-    df = df[['id', 'shop_name', 'shop_address', 'contact_person', 'region', 'phone', 'date']]
-    df.columns = ['id', 'Shop Name', 'Shop Address', 'Contact Person', 'Region', 'Phone', 'Date']
-    
     # Display the DataFrame as a table
     st.table(df)
 else:
